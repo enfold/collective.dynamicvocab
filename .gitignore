@@ -1,0 +1,10 @@
+*.pyc
+.installed.cfg
+bin/
+develop-eggs/
+include/
+lib/
+parts/
+var/
+src/collective.dynamicvocab.egg-info/
+
