@@ -4,5 +4,14 @@ Changelog
 0.1-dev (unreleased)
 --------------------
 
+- Added utility to register, unregister and manage dynamic vocabularies
+  [frapell]
+
+- Added Term content type that will be used to create terms for the vocabulary
+  [frapell]
+
+- Added Vocabulary content type that will act as a vocabulary
+  [frapell]
+
 - Package created using templer
-  []
+  [frapell]
