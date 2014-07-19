@@ -18,4 +18,29 @@
       />
   <!-- -*- extra stuff goes here -*- -->
 
+  <!-- Events subscribers -->
+  <subscriber
+      for="collective.dynamicvocab.interfaces.IVocabulary
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".events.register_vocabulary"
+      />
+
+  <subscriber
+      for="collective.dynamicvocab.interfaces.ITerm
+           zope.lifecycleevent.interfaces.IObjectAddedEvent"
+      handler=".events.add_term_to_vocabulary"
+      />
+
+  <subscriber
+      for="collective.dynamicvocab.interfaces.IVocabulary
+           zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+      handler=".events.unregister_vocabulary"
+   />
+
+  <!-- Utility for managing dynamic vocabularies -->
+  <utility
+      provides="collective.dynamicvocab.interfaces.IDynamicVocabUtility"
+      factory="collective.dynamicvocab.utility.DynamicVocabUtility"
+      />
+
 </configure>

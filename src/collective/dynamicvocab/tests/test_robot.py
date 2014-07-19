@@ -1,4 +1,4 @@
-from  collective.dynamicvocab.testing import COLLECTIVE_DYNAMICVOCAB_FUNCTIONAL_TESTING
+from collective.dynamicvocab.testing import COLLECTIVE_DYNAMICVOCAB_FUNCTIONAL_TESTING
 from plone.testing import layered
 import robotsuite
 import unittest
