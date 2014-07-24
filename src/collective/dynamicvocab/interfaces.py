@@ -2,6 +2,11 @@
 from zope.interface import Interface
 
 
+class IVocabularyRepository(Interface):
+    """
+    """
+
+
 class IVocabulary(Interface):
     """
     """

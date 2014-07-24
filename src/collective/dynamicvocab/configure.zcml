@@ -16,6 +16,14 @@
       description="Installs the collective.dynamicvocab package"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+      
+  <genericsetup:importStep
+      name="dynamic-vocab-after-install"
+      title="collective.dynamicvocab: Additional setup steps"
+      description="Additional steps needed when installing the package"
+      handler=".setuphandlers.on_install"
+      />
+
   <!-- -*- extra stuff goes here -*- -->
 
   <!-- Events subscribers -->

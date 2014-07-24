@@ -1,19 +1,18 @@
 <?xml version="1.0"?>
-<object name="collective.dynamicvocab.vocabulary" meta_type="Dexterity FTI" i18n:domain="plone"
-   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Vocabulary</property>
- <property name="description"
-    i18n:translate="">A dynamic vocabulary</property>
+<object name="collective.dynamicvocab.repository" meta_type="Dexterity FTI"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <property name="title" i18n:translate="">Vocabulary Repository</property>
+ <property name="description" i18n:translate="">None</property>
  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
- <property name="factory">collective.dynamicvocab.vocabulary</property>
+ <property name="factory">collective.dynamicvocab.repository</property>
  <property
-    name="add_view_expr">string:${folder_url}/++add++collective.dynamicvocab.vocabulary</property>
+    name="add_view_expr">string:${folder_url}/++add++collective.dynamicvocab.repository</property>
  <property name="link_target"></property>
  <property name="immediate_view">view</property>
  <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
-  <element value="collective.dynamicvocab.term"/>
+  <element value="collective.dynamicvocab.vocabulary"/>
  </property>
  <property name="allow_discussion">False</property>
  <property name="default_view">view</property>
@@ -22,15 +21,21 @@
  </property>
  <property name="default_view_fallback">False</property>
  <property name="add_permission">cmf.AddPortalContent</property>
- <property name="klass">collective.dynamicvocab.content.vocabulary.Vocabulary</property>
+ <property name="klass">collective.dynamicvocab.content.repository.VocabularyRepository</property>
  <property name="behaviors">
   <element value="plone.app.content.interfaces.INameFromTitle"/>
   <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+  <element
+     value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
   <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
  </property>
  <property name="schema"></property>
- <property name="model_source"></property>
- <property name="model_file">collective.dynamicvocab.content.models:vocabulary.xml</property>
+ <property name="model_source">
+  &lt;model xmlns="http://namespaces.plone.org/supermodel/schema"&gt;
+      &lt;schema&gt;
+      &lt;/schema&gt;
+  &lt;/model&gt;</property>
+ <property name="model_file"></property>
  <property name="schema_policy">dexterity</property>
  <alias from="(Default)" to="(dynamic view)"/>
  <alias from="edit" to="@@edit"/>
