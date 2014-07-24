@@ -21,3 +21,9 @@ def unregister_vocabulary(obj, event):
 def update_vocabulary(obj, event):
     utility = queryUtility(IDynamicVocabUtility)
     utility.update_vocabulary(obj)
+
+
+def remove_term(obj, event):
+    vocab = obj.aq_parent
+    utility = queryUtility(IDynamicVocabUtility)
+    utility.update_vocabulary(vocab)
