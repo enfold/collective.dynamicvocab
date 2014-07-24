@@ -116,3 +116,37 @@ class DynamicVocabUtility(object):
         sm = site.getSiteManager()
         sm.registerUtility(vocabulary, IVocabularyFactory, vocab_id)
         logger.info("Term added.")
+
+    def update_vocabulary(self, vocab):
+        site = getSite()
+        path = '/'.join(vocab.getPhysicalPath())
+        logger.info("Updating dynamic vocabulary: %s" % path)
+
+        vocab_id = vocab.vocabulary_id
+
+        registered_vocabs = [i[0] for i in getUtilitiesFor(IVocabularyFactory)]
+
+        if not vocab_id:
+            logger.warn(
+                "This vocabulary was not registered, you need to register "
+                "it first."
+            )
+            return False
+
+        elif vocab_id not in registered_vocabs:
+            logger.warn("There is no vocabulary registered with id: %s"
+                        % vocab_id)
+            return False
+
+        vocabulary = queryUtility(IVocabularyFactory, vocab_id, context=site)
+
+        vocabulary.clearTerms()
+
+        for child in vocab.getChildNodes():
+            vocabulary.addTerm(child)
+
+        sm = site.getSiteManager()
+        sm.registerUtility(vocabulary, IVocabularyFactory, vocab_id)
+        logger.info("Vocabulary updated.")
+
+        return True

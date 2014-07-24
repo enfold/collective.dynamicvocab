@@ -32,3 +32,8 @@ class DynamicVocabulary(SimpleVocabulary):
         # XXX: No need to check if the item already exists in the vocabulary
         self.by_value[term.value] = term
         self.by_token[term.token] = term
+
+    def clearTerms(self):        
+        self.by_value = dict()
+        self.by_token = dict()
+        self._terms = list()

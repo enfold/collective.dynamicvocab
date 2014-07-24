@@ -45,6 +45,12 @@
       handler=".events.unregister_vocabulary"
    />
 
+  <subscriber
+      for="collective.dynamicvocab.interfaces.IVocabulary
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.update_vocabulary"
+   />
+
   <!-- Utility for managing dynamic vocabularies -->
   <utility
       provides="collective.dynamicvocab.interfaces.IDynamicVocabUtility"

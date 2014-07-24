@@ -16,3 +16,8 @@ def add_term_to_vocabulary(obj, event):
 
 def unregister_vocabulary(obj, event):
     pass
+
+
+def update_vocabulary(obj, event):
+    utility = queryUtility(IDynamicVocabUtility)
+    utility.update_vocabulary(obj)
