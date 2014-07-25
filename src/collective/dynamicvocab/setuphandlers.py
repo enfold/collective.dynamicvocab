@@ -8,8 +8,9 @@ def on_install(context):
     addRepository(site)
 
 def addRepository(site):
-    repository = createContentInContainer(
-        site, 'collective.dynamicvocab.repository',
-        title=u"Vocabularies", checkConstraints=False
-    )
-    repository.exclude_from_nav = True
+    if 'vocabularies' not in site:
+        repository = createContentInContainer(
+            site, 'collective.dynamicvocab.repository',
+            title=u"Vocabularies", checkConstraints=False
+        )
+        repository.exclude_from_nav = True
