@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    >
+
+    <permission
+        id="collective.dynamicvocab.RenamePortalObjects"
+        title="Rename portal objects"
+        />
+
+</configure>

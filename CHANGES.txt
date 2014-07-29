@@ -4,6 +4,9 @@ Changelog
 0.1-dev (unreleased)
 --------------------
 
+- Add custom workflows for the new content types
+  [frapell]
+
 - Added utility to register, unregister and manage dynamic vocabularies
   [frapell]
 
