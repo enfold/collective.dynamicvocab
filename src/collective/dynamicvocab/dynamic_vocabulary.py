@@ -33,7 +33,7 @@ class DynamicVocabulary(SimpleVocabulary):
         self.by_value[term.value] = term
         self.by_token[term.token] = term
 
-    def clearTerms(self):        
+    def clearTerms(self):
         self.by_value = dict()
         self.by_token = dict()
         self._terms = list()

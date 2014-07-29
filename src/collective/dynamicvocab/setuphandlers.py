@@ -7,6 +7,7 @@ def on_install(context):
     site = context.getSite()
     addRepository(site)
 
+
 def addRepository(site):
     if 'vocabularies' not in site:
         repository = createContentInContainer(
