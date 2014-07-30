@@ -4,6 +4,9 @@ Changelog
 0.1-dev (unreleased)
 --------------------
 
+- Make the content types not returned in the site search results
+  [frapell]
+
 - Added convenience link in the Site Setup to access the vocabulary repository
   [frapell]
 
