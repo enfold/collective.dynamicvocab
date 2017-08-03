@@ -27,3 +27,9 @@ def remove_term(obj, event):
     vocab = obj.aq_parent
     utility = queryUtility(IDynamicVocabUtility)
     utility.update_vocabulary(vocab)
+
+def update_term(obj, event):
+    vocab = obj.aq_parent
+    utility = queryUtility(IDynamicVocabUtility)
+    utility.update_vocabulary(vocab)
+

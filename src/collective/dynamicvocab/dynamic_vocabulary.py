@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from persistent.list import PersistentList
+from persistent.mapping import PersistentMapping
 from zope.interface import implements
 from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
@@ -14,10 +16,10 @@ class DynamicVocabulary(SimpleVocabulary):
 
     def __init__(self, obj, *interfaces):
 
-        self.by_value = dict()
-        self.by_token = dict()
+        self.by_value = PersistentMapping()
+        self.by_token = PersistentMapping()
         self._obj = obj
-        self._terms = list()
+        self._terms = PersistentList()
 
         if interfaces:
             directlyProvides(self, *interfaces)
@@ -27,6 +29,18 @@ class DynamicVocabulary(SimpleVocabulary):
         return self._obj.description
 
     def addTerm(self, obj):
+        if not isinstance(self._terms, PersistentList):
+            terms = PersistentList()
+            for term in self._terms:
+                terms.append(term)
+            self._terms = terms
+        for attr_id in ['by_value', 'by_token']:
+            attr = getattr(self, attr_id)
+            if not isinstance(attr, PersistentMapping):
+                new_attr = PersistentMapping()
+                for k, v in attr.items():
+                    new_attr[k] = v
+                setattr(self, attr_id, new_attr)
         term = SimpleTerm(obj.id, obj.id, obj.title)
         self._terms.append(term)
         # XXX: No need to check if the item already exists in the vocabulary
@@ -34,6 +48,6 @@ class DynamicVocabulary(SimpleVocabulary):
         self.by_token[term.token] = term
 
     def clearTerms(self):
-        self.by_value = dict()
-        self.by_token = dict()
-        self._terms = list()
+        self.by_value = PersistentMapping()
+        self.by_token = PersistentMapping()
+        self._terms = PersistentList()

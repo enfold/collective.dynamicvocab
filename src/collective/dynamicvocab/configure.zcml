@@ -63,6 +63,12 @@
       handler=".events.remove_term"
    />
 
+  <subscriber
+      for="collective.dynamicvocab.interfaces.ITerm
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+      handler=".events.update_term"
+   />
+
   <!-- Utility for managing dynamic vocabularies -->
   <utility
       provides="collective.dynamicvocab.interfaces.IDynamicVocabUtility"
