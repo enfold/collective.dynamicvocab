@@ -1,10 +1,10 @@
+
+from plone import api
 from plone.dexterity.utils import createContentInContainer
 
 
-def on_install(context):
-    if context.readDataFile('collective_dynamicvocab.txt') is None:
-        return
-    site = context.getSite()
+def post_install(context):
+    site = api.portal.get()
     addRepository(site)
 
 

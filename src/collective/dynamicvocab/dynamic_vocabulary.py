@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 from persistent.list import PersistentList
 from persistent.mapping import PersistentMapping
-from zope.interface import implements
+from zope.interface import implementer
 from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
+@implementer(IVocabularyFactory)
 class DynamicVocabulary(SimpleVocabulary):
-    implements(IVocabularyFactory)
 
     def __call__(self, context):
         return self

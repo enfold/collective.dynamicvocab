@@ -3,8 +3,9 @@ from collective.dynamicvocab.interfaces import IVocabularyRepository
 
 from plone.dexterity.content import Container
 
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(IVocabularyRepository)
 class VocabularyRepository(Container):
-    implements(IVocabularyRepository)
+    pass
