@@ -38,7 +38,7 @@ class DynamicVocabUtility(object):
             vocab_id = aux_name
 
         vocabulary = DynamicVocabulary(obj)
-        for child in obj.getChildNodes():
+        for child in obj.contentValues():
             vocabulary.addTerm(child)
 
         site = getSite()
@@ -142,7 +142,7 @@ class DynamicVocabUtility(object):
 
         vocabulary.clearTerms()
 
-        for child in vocab.getChildNodes():
+        for child in vocab.contentValues():
             vocabulary.addTerm(child)
 
         sm = site.getSiteManager()
